@@ -1,0 +1,30 @@
+server:
+  port: ${PORT:8081}
+
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: ${DB_URL:jdbc:h2:file:./data/auth;MODE=Oracle;AUTO_SERVER=TRUE}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+  sql:
+    init:
+      mode: always
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:local-dev-secret-change-me-before-deploying-123}
+    ttl-hours: ${JWT_TTL_HOURS:24}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  api-docs:
+    path: /api/auth/v3/api-docs
+  swagger-ui:
+    path: /api/auth/swagger-ui.html

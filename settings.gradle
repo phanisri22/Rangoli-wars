@@ -1,0 +1,3 @@
+rootProject.name = 'rangoli-wars'
+
+include 'game-engine', 'auth-service', 'game-service', 'leaderboard-service', 'gateway'

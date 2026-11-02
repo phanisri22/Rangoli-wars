@@ -1,0 +1,43 @@
+server:
+  port: ${PORT:8083}
+  tomcat:
+    use-relative-redirects: true
+
+spring:
+  application:
+    name: leaderboard-service
+  datasource:
+    url: ${DB_URL:jdbc:h2:file:./data/leaderboard;MODE=Oracle;AUTO_SERVER=TRUE}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+  sql:
+    init:
+      mode: always
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  webservices:
+    path: /soap
+    servlet:
+      init:
+        transformWsdlLocations: true
+
+app:
+  internal-api-key: ${INTERNAL_API_KEY:local-internal-key}
+  game-service-url: ${GAME_SERVICE_URL:http://localhost:8082}
+  admin:
+    username: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:admin123}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  api-docs:
+    path: /api/leaderboard/v3/api-docs
+  swagger-ui:
+    path: /api/leaderboard/swagger-ui.html

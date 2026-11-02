@@ -1,0 +1,27 @@
+server:
+  port: ${PORT:8082}
+
+spring:
+  application:
+    name: game-service
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:local-dev-secret-change-me-before-deploying-123}
+  internal-api-key: ${INTERNAL_API_KEY:local-internal-key}
+  leaderboard-url: ${LEADERBOARD_URL:http://localhost:8083}
+  turn-seconds: ${TURN_SECONDS:30}
+  bot-delay-ms: ${BOT_DELAY_MS:900}
+  allowed-origins: ${ALLOWED_ORIGINS:*}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  api-docs:
+    path: /api/game/v3/api-docs
+  swagger-ui:
+    path: /api/game/swagger-ui.html

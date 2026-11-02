@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:leaderboardtest;MODE=Oracle;DB_CLOSE_DELAY=-1
+
+app:
+  internal-api-key: test-key
+  admin:
+    username: admin
+    password: test-pass

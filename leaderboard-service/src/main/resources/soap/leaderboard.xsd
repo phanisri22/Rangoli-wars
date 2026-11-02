@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://rangoliwars.com/leaderboard"
+           targetNamespace="http://rangoliwars.com/leaderboard"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="playerStats">
+        <xs:sequence>
+            <xs:element name="rank" type="xs:int"/>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="gamesPlayed" type="xs:int"/>
+            <xs:element name="wins" type="xs:int"/>
+            <xs:element name="totalTiles" type="xs:int"/>
+            <xs:element name="rating" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getTopPlayersRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="limit" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTopPlayersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="player" type="tns:playerStats" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPlayerStatsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPlayerStatsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="player" type="tns:playerStats" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

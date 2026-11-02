@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="replay">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="players">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="player" minOccurs="2" maxOccurs="4">
+                                <xs:complexType>
+                                    <xs:attribute name="color" type="xs:int" use="required"/>
+                                    <xs:attribute name="name" type="xs:string" use="required"/>
+                                    <xs:attribute name="username" type="xs:string"/>
+                                    <xs:attribute name="bot" type="xs:boolean" use="required"/>
+                                    <xs:attribute name="score" type="xs:int" use="required"/>
+                                    <xs:attribute name="placement" type="xs:int" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="moves">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="move" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="turn" type="xs:int" use="required"/>
+                                    <xs:attribute name="round" type="xs:int" use="required"/>
+                                    <xs:attribute name="color" type="xs:int" use="required"/>
+                                    <xs:attribute name="type" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="PLACE"/>
+                                                <xs:enumeration value="SPLASH"/>
+                                                <xs:enumeration value="SHIELD"/>
+                                                <xs:enumeration value="SWAP"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="row" type="xs:int" use="required"/>
+                                    <xs:attribute name="col" type="xs:int" use="required"/>
+                                    <xs:attribute name="row2" type="xs:int"/>
+                                    <xs:attribute name="col2" type="xs:int"/>
+                                    <xs:attribute name="gained" type="xs:int" use="required"/>
+                                    <xs:attribute name="captured" type="xs:int" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="matchId" type="xs:long" use="required"/>
+            <xs:attribute name="room" type="xs:string" use="required"/>
+            <xs:attribute name="boardSize" type="xs:int" use="required"/>
+            <xs:attribute name="maxRounds" type="xs:int" use="required"/>
+            <xs:attribute name="finishedAt" type="xs:dateTime" use="required"/>
+            <xs:attribute name="endedEarly" type="xs:boolean" use="required"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
